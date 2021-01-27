@@ -1,4 +1,4 @@
-project(template_lib)
+project(template_lib) # TODO: Rename
 
 add_library(${PROJECT_NAME} SHARED)
 target_include_directories(${PROJECT_NAME}

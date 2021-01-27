@@ -1,4 +1,4 @@
-project(main_exe)
+project(app) # TODO: Rename
 
 add_executable(${PROJECT_NAME})
 

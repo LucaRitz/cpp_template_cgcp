@@ -10,5 +10,5 @@ find_package(OpenCV REQUIRED CONFIG
 unset(BUILD_SHARED_LIBS)
 
 add_subdirectory(lib)
-add_subdirectory(main)
+add_subdirectory(app)
 add_subdirectory(test)

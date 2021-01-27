@@ -1,4 +1,4 @@
-project(template_lib_test)
+project(template_lib_test) # TODO: Rename
 
 set(CMAKE_CXX_STANDARD 17)
 
