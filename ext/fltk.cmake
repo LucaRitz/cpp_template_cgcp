@@ -20,6 +20,3 @@ unset(OPTION_USE_SYSTEM_LIBJPEG)
 unset(FLTK_BUILD_TEST)
 
 target_compile_definitions(fltk_SHARED PUBLIC -DFL_DLL)
-set(FLTK_LIBS fltk_SHARED CACHE INTERNAL "")
-set(FLTK_INCLUDE_DIRS ${CMAKE_BINARY_DIR}/_deps/fltk-src/ ${CMAKE_BINARY_DIR}/_deps/fltk-build/ CACHE INTERNAL "")
-set(FLTK_BIN_DIR ${CMAKE_BINARY_DIR}/_deps/fltk-build/lib CACHE INTERNAL "")
