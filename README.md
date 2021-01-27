@@ -66,7 +66,7 @@ There is already a built in approach to generate a project documentation with
 latex and docker. The necessary folders for this are "doc" and "doc_source".<br>
 If you don't need a documentation pdf you can delete these two folders, otherwise
 read the next few lines.<br>
-##### Build a document
+#### Build a document
 You don't have to do much, just install docker on your system and navigate inside a console of your choice to
 the folder [doc_source](doc_source) and write the following:<br>
 ```
@@ -85,7 +85,7 @@ that there is a restriction with subdirectories. You can add just one subdirecto
 a chapter so you can't add another subdirectory in [doc_source/tex/document/en/chapter_01](doc_source/tex/document/en/chapter_01) for example
 (however, a resource folder is allowed).<br><br>
 
-##### I need more than one document
+#### I need more than one document
 You can duplicate the directory [doc_source/tex/document/](doc_source/tex/document) and give it another name.
 Then you can change the name inside the [doc_source/.env](doc_source/.env) file to build this document.
 The resulting file will be stored inside "doc/<your-name>/<your-language>/<your-main-latex-file-name>.pdf".<br>
