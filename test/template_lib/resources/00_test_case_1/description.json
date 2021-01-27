@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Test Title 1",
+    "description": "Create the expected type",
+    "input": {
+      "type": {
+        "value": 10
+      }
+    },
+    "expected": {
+      "type": {
+        "value": 10
+      }
+    }
+  },
+  {
+    "title": "Test Title 2",
+    "description": "Create the expected type",
+    "input": {
+      "type": {
+        "value": 15
+      }
+    },
+    "expected": {
+      "type": {
+        "value": 15
+      }
+    }
+  }
+]
