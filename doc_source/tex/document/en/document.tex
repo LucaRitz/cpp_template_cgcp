@@ -1,0 +1,23 @@
+\input{../common/command_definition}
+\setup{english}
+
+% glossary
+\input{./resources/glossary}
+\addbibresource{../common/resources/literature.bib}
+
+\usepackage{blindtext} % TODO: Remove
+
+\begin{document}
+
+    \include{title_page}
+    \newpage
+    \tableofcontents
+
+    \include{chapter_01/chapter_01}
+
+    \newpage
+    \listoffigures
+    \printbibliography[heading=bibintoc]
+    \printunsrtglossary[style={index}]
+
+\end{document}

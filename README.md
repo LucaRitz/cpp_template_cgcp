@@ -34,6 +34,7 @@ The layout explained in detail:
     .
     └── src                 # Source files of the main project
 ├── cmake                   # Custom cmake files
+├── ...                     # Not necessary for build purposes
 ├── ext                     # External libraries
 ├── lib                     # Custom libraries
     .
@@ -59,6 +60,43 @@ There are three interesting targets:
 2. Let CMake configure.
 3. Run your main or test application
 4. Add your own lib-targets and test-applications
+
+### The documentation
+There is already a built in approach to generate a project documentation with
+latex and docker. The necessary folders for this are "doc" and "doc_source".<br>
+If you don't need a documentation pdf you can delete these two folders, otherwise
+read the next few lines.<br>
+##### Build a document
+You don't have to do much, just install docker on your system and navigate inside a console of your choice to
+the folder [doc_source](doc_source) and write the following:<br>
+```
+docker-compose up
+```
+This command generates and stores your pdf in [doc/document/en/document.pdf](doc/document/en/document.pdf).
+If you wan't to change the language, just navigate to [doc_source/.env](doc_source/.env) and change the "LANGUAGE"
+environment variable to "de" for example. Note that you must provide a language folder inside [doc_source/tex/document/](doc_source/tex/document)
+where the language specific latex-files are stored. Inside this environment file, you can also change the document to
+be created if you have more than one. The environment you have to change is "DOCUMENT". Just write the name of the
+top-level folder there, at the moment this is [document](doc_source/tex/document).
+
+#### Write content
+There is an example layout provided, but you can change this as you want, just keep in mind
+that there is a restriction with subdirectories. You can add just one subdirectory inside your language specific folder for
+a chapter so you can't add another subdirectory in [doc_source/tex/document/en/chapter_01](doc_source/tex/document/en/chapter_01) for example
+(however, a resource folder is allowed).<br><br>
+
+##### I need more than one document
+You can duplicate the directory [doc_source/tex/document/](doc_source/tex/document) and give it another name.
+Then you can change the name inside the [doc_source/.env](doc_source/.env) file to build this document.
+The resulting file will be stored inside "doc/<your-name>/<your-language>/<your-main-latex-file-name>.pdf".<br>
+Note that there are much files generated, just copy and paste the [doc/document/.gitignore](doc/document/.gitignore)
+file to your new directory "doc/<your-name>".
+
+#### I have my own latex files which I need to provide
+You are able to provide your own latex libraries, just put them directly inside [doc_source/tex/latex_files](doc_source/tex/latex_files).
+Have a look at the text document there if you need some more info [a_latex_file.txt](doc_source/tex/latex_files/a_latex_file.txt).
+During build-time, all the files will be copied to your directory where your main tex file is stored and will be automatically deleted from there after the build,
+so don't worry if there appear and disappear some files magically.
 
 ## Platforms and build
 The libraries are intent to be shared-build, there is no static build available right now.

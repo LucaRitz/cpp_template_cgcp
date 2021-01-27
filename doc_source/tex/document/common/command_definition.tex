@@ -1,0 +1,154 @@
+\newcommand{\setup}[1]{
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+    \documentclass[a4paper, 11pt, oneside]{book} % A4 paper size, default 11pt font size and oneside for equal margins
+
+    \usepackage[margin=1in,nomarginpar]{geometry}
+    \usepackage[utf8]{inputenc} % Required for inputting international characters
+    \usepackage[T1]{fontenc} % Output font encoding for international characters
+    \usepackage{fouriernc} % Use the New Century Schoolbook font
+    \usepackage{titletoc}% http://ctan.org/pkg/titletoc
+    \usepackage{hyperref}
+    \usepackage{graphicx}
+    \usepackage{lipsum}
+    \usepackage{caption}
+    \usepackage{float}
+    \usepackage{amssymb}
+    \usepackage{amsmath}
+
+    \usepackage{xlop}
+    \usepackage{tikz}
+    \usepackage{xfp}
+    \usepackage{soul}
+    \usepackage{xifthen}
+    \sodef\carrystyle{}{0.45em}{0em}{-0.25em}
+
+    \newcommand{\opandbin}[3]{
+        \oplogicalbin{##1}{##2}{##3}{$\land$}
+    }
+
+    \newcommand{\oporbin}[3]{
+        \oplogicalbin{##1}{##2}{##3}{$\lor$}
+    }
+
+    \newcommand{\oplogicalbin}[4] {
+        \begin{tabular}[t]{rr}
+            &\pgfmathbin{##1}\pgfmathresult\\
+            ##4&\pgfmathbin{##2}\pgfmathresult\\\hline
+            &\pgfmathbin{##3}\pgfmathresult
+        \end{tabular}
+    }
+
+    \newcommand{\opaddbin}[3]{
+        \newcommand{\resultInBaseTen}{\fpeval{##1+##2}}
+
+        \newcount\currentValue
+        \newcount\basenumberlength
+        \currentValue=\resultInBaseTen
+        \basenumberlength=0
+
+        \loop
+        \advance \basenumberlength + 1
+        \currentValue=\numexpr \currentValue / 2\relax
+        \ifnum \currentValue > 1
+        \repeat
+
+        \pgfmathsetbasenumberlength{\basenumberlength}
+        \begin{tabular}[t]{rr}
+            \ifthenelse{\isempty{##3}}%
+            {}% if #3 is empty
+            {&\pgfcarrybin{##3}\\}% if #3 is not empty
+            &\pgfmathbin{##1}\pgfmathresult\\
+            +&\pgfmathbin{##2}\pgfmathresult\\\hline
+            &\pgfmathbin{\resultInBaseTen}\pgfmathresult
+        \end{tabular}
+    }
+
+    \newcommand{\pgfcarry}[1]{
+        \begin{tiny}
+            \expandafter\carrystyle\expandafter{##1}
+        \end{tiny}
+    }
+
+    \newcommand{\pgfcarrybin}[1] {
+        \pgfmathbin{##1}
+        \pgfcarry{\pgfmathresult}
+    }
+
+    \usepackage{a4wide}
+    \usepackage[#1]{babel}
+    \usepackage[local,nolabels,exerciseaslist,usesolutionserieslabels]{exsol}
+    \renewcommand{\loadSolutions}{
+        \immediate\closeout\solutionstream
+        \input{\jobname.sol.tex}
+        \immediate\openout\solutionstream=\jobname.sol.tex
+    }
+
+    \setlength{\exsolexercisetopbottomsep}{0pt plus 0pt minus 1pt}
+    \setlength{\exsolexerciseleftmargin}{2em}
+    \setlength{\exsolexerciserightmargin}{1em}
+    \setlength{\exsolexerciseparindent}{0em}
+    \setlength{\exsolexerciselabelsep}{1ex}
+    \setlength{\exsolexerciselabelwidth}{30pt}
+    \setlength{\exsolexerciseitemindent}{0pt}
+    \setlength{\exsolexerciseparsep}{\parskip}
+
+    \usepackage[postpunc={dot},% full stop after description
+    nostyles,% don't load default style packages
+% load glossaries-extra-stylemods.sty and glossary-tree.sty:
+    stylemods={tree}
+    ]{glossaries-extra}
+
+    \usepackage[backend=biber,
+    style=alphabetic,
+    ]{biblatex}
+
+    \usepackage[nottoc]{tocbibind}
+    \usepackage{listings}
+    \usepackage{xcolor}
+
+    \colorlet{punct}{red!60!black}
+    \definecolor{background}{HTML}{EEEEEE}
+    \definecolor{delim}{RGB}{20,105,176}
+    \colorlet{numb}{magenta!60!black}
+
+    \lstdefinelanguage{json}{
+        basicstyle=\normalfont\ttfamily,
+        numbers=left,
+        numberstyle=\scriptsize,
+        stepnumber=1,
+        numbersep=8pt,
+        showstringspaces=false,
+        breaklines=true,
+        frame=lines,
+        backgroundcolor=\color{background},
+        literate=
+        *{0}{{{\color{numb}0}}}{1}
+        {1}{{{\color{numb}1}}}{1}
+        {2}{{{\color{numb}2}}}{1}
+        {3}{{{\color{numb}3}}}{1}
+        {4}{{{\color{numb}4}}}{1}
+        {5}{{{\color{numb}5}}}{1}
+        {6}{{{\color{numb}6}}}{1}
+        {7}{{{\color{numb}7}}}{1}
+        {8}{{{\color{numb}8}}}{1}
+        {9}{{{\color{numb}9}}}{1}
+        {:}{{{\color{punct}{:}}}}{1}
+        {,}{{{\color{punct}{,}}}}{1}
+        {\{}{{{\color{delim}{\{}}}}{1}
+        {\}}{{{\color{delim}{\}}}}}{1}
+        {[}{{{\color{delim}{[}}}}{1}
+        {]}{{{\color{delim}{]}}}}{1},
+}
+
+% Table of contents with links
+\hypersetup{
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black
+}
+}

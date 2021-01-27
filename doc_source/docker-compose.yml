@@ -1,0 +1,14 @@
+version: '3'
+services:
+  document_build:
+    build:
+      context: './'
+    #command: tail -f /dev/null
+    environment:
+      - LANGUAGE=${LANGUAGE}
+    volumes:
+      - ./tex/${DOCUMENT}/${LANGUAGE}:/source/${LANGUAGE}
+      - ./tex/${DOCUMENT}/common:/source/common
+      - ./tex/latex_files:/usr/share/texlive/texmf-dist/tex/latex/custom_files
+      - ../doc/${DOCUMENT}/${LANGUAGE}:/interface/output
+    container_name: template_document_build
