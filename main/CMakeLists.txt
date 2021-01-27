@@ -20,4 +20,4 @@ add_subdirectory(src)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         TEMPLATE_LIB_IMPORT)
-target_link_libraries(${PROJECT_NAME} PRIVATE template_lib)
+target_link_libraries(${PROJECT_NAME} PRIVATE template_lib fltk_SHARED)

@@ -33,3 +33,7 @@
 
 cmake-build-debug/
 cmake-build-release/
+.vs/
+.idea/
+CMakeSettings.json
+out/
