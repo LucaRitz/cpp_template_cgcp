@@ -1,0 +1,13 @@
+version: '3'
+services:
+  doxygen:
+    build:
+      context: './'
+    #command: tail -f /dev/null
+    environment:
+      - LANGUAGE=${LANGUAGE}
+      - LIBRARY=${LIBRARY}
+    volumes:
+      - ../lib/${LIBRARY}:/data
+      - ../doxygen_output:/output
+    container_name: template_doxygen_build

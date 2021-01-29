@@ -61,17 +61,40 @@ There are three interesting targets:
 3. Run your main or test application
 4. Add your own lib-targets and test-applications
 
+### Doxygen
+#### Prerequisites
+- Docker
+
+#### Build a document
+Have a look at [lib/template_lib/](lib/template_lib). You will find a Doxyfile to describe the
+documentation of that library. To create the documentation just build the target 'doxygen' or 
+navigate in a console of your choice to the folder [doxygen](doxygen) and execute:
+```
+docker-compose up
+```
+The output will be stored in 'doxygen_output/<name-of-library>'.
+
+#### Build another library
+If you want to build the documentation of another library, just edit the environment
+variable 'LIBRARY' [doxygen/.env](doxygen/.env) (this is the name of the folder of the library, eg. [template_lib](lib/template_lib)).
+You can also change the language to generate there.
+
 ### The documentation
+#### Prerequisites
+- Docker
+
 There is already a built in approach to generate a project documentation with
 latex and docker. The necessary folders for this are "doc" and "doc_source".<br>
 If you don't need a documentation pdf you can delete these two folders, otherwise
 read the next few lines.<br>
+
 #### Build a document
 You don't have to do much, just install docker on your system and navigate inside a console of your choice to
-the folder [doc_source](doc_source) and write the following:<br>
+the folder [doc_source](doc_source) and execute:<br>
 ```
 docker-compose up
 ```
+or just use the target 'document' and build it.
 This command generates and stores your pdf in [doc/document/en/document.pdf](doc/document/en/document.pdf).
 If you wan't to change the language, just navigate to [doc_source/.env](doc_source/.env) and change the "LANGUAGE"
 environment variable to "de" for example. Note that you must provide a language folder inside [doc_source/tex/document/](doc_source/tex/document)
