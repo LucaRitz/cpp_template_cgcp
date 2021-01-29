@@ -85,7 +85,8 @@ You can also change the language to generate there.
 
 There is already a built in approach to generate a project documentation with
 latex and docker. The necessary folders for this are "doc" and "doc_source".<br>
-If you don't need a documentation pdf you can delete these two folders, otherwise
+If you don't need a documentation pdf you can delete these two folders, don't forget to
+remove the 'add_subdirectory' in [CMakeLists.txt](CMakeLists.txt), otherwise
 read the next few lines.<br>
 
 #### Build a document
