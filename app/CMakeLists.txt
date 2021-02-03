@@ -5,9 +5,9 @@ add_executable(${PROJECT_NAME})
 add_custom_command(TARGET ${PROJECT_NAME}
         PRE_BUILD
 
-        # Copy resources from res folder into binary folder
+        # Copy resources to binary folder
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${PROJECT_SOURCE_DIR}/res/ ${PROJECT_BINARY_DIR}/res/
+        ${PROJECT_SOURCE_DIR}/resources/ ${PROJECT_BINARY_DIR}/resources/
         )
 
 add_custom_command(TARGET ${PROJECT_NAME}
