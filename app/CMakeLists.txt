@@ -3,6 +3,14 @@ project(app) # TODO: Rename
 add_executable(${PROJECT_NAME})
 
 add_custom_command(TARGET ${PROJECT_NAME}
+        PRE_BUILD
+
+        # Copy resources from res folder into binary folder
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${PROJECT_SOURCE_DIR}/res/ ${PROJECT_BINARY_DIR}/res/
+        )
+
+add_custom_command(TARGET ${PROJECT_NAME}
         POST_BUILD
 
         # Copy dependencies to binary folder
