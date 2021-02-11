@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     imshow("Display window", img);
-    int k = waitKey(0); // Wait for a keystroke in the window
+    waitKey(0); // Wait for a keystroke in the window
 
     return 0;
 }

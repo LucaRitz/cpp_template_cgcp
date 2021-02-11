@@ -15,7 +15,7 @@ add_custom_command(TARGET ${PROJECT_NAME}
 
         # Copy dependencies to binary folder
         COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:template_lib> ${PROJECT_BINARY_DIR}/
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:fltk> ${PROJECT_BINARY_DIR}/
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:fltk_SHARED> ${PROJECT_BINARY_DIR}/
         )
 foreach(OpenCV_LIB ${OpenCV_LIBS})
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
