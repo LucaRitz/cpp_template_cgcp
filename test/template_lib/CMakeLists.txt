@@ -20,5 +20,7 @@ add_custom_command(TARGET ${PROJECT_NAME}
 
 add_subdirectory(src)
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE TEMPLATE_LIB_IMPORT)
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+        TEMPLATE_LIB_IMPORT
+        GTEST_LINKED_AS_SHARED_LIBRARY=1)
 target_link_libraries(${PROJECT_NAME} PRIVATE template_lib nlohmann_json::nlohmann_json gtest gtest_main gmock gmock_main)
