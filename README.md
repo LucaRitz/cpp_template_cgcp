@@ -30,7 +30,7 @@ Naturally, the template can be adapted for other projects also.<br>
 The layout explained in detail:
 ```
 .
-├── app                     # Main project
+├── app                     # Main project (may delete this folder if the project is a pure-library project)
     .
     └── src                 # Source files of the main project
 ├── cmake                   # Custom cmake files
@@ -136,3 +136,28 @@ Tested IDEs:
 ## Additional
 I tried to follow the latest cmake recommendations. If there is any potential for improvement
 (eg. testing and fixing for linux platforms), feel free to contribute.
+
+## External usage for pure-library projects
+As mentioned before, the folder "app" has to be deleted if the project is a pure-library project.
+Additionally, the options in the main [CMakeLists](CMakeLists.txt) have to be renamed with the correct prefix.
+The following Code-Snippet shows the recommended usage in external projects.
+```cmake
+include(FetchContent)
+
+option(ANY_PREFIX_BUILD_TEST "" OFF)
+option(ANY_PREFIX_BUILD_DOCUMENTATION "" OFF)
+option(ANY_PREFIX_BUILD_CODE_DOCUMENTATION "" OFF)
+option(ANY_PREFIX_BUILD_EXT_LIBS "" OFF)
+
+FetchContent_Declare(
+        laplacian_pyramid
+        GIT_REPOSITORY https://github.com/LucaRitz/laplacian-pyramid
+        GIT_TAG        main
+)
+FetchContent_MakeAvailable(laplacian_pyramid)
+
+unset(ANY_PREFIX_BUILD_TEST)
+unset(ANY_PREFIX_BUILD_DOCUMENTATION)
+unset(ANY_PREFIX_BUILD_CODE_DOCUMENTATION)
+unset(ANY_PREFIX_BUILD_EXT_LIBS)
+```

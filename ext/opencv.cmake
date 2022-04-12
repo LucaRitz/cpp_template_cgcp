@@ -37,3 +37,8 @@ build_external_project(
         -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/opencv
         -DOPENCV_EXTRA_MODULES_PATH=${opencv_contrib_SOURCE_DIR}/modules
 )
+
+set(BUILD_SHARED_LIBS ON CACHE INTERNAL "")
+find_package(OpenCV REQUIRED CONFIG
+        PATHS ${CMAKE_BINARY_DIR}/ext/opencv/opencv)
+unset(BUILD_SHARED_LIBS)
