@@ -150,11 +150,11 @@ option(ANY_PREFIX_BUILD_CODE_DOCUMENTATION "" OFF)
 option(ANY_PREFIX_BUILD_EXT_LIBS "" OFF)
 
 FetchContent_Declare(
-        laplacian_pyramid
-        GIT_REPOSITORY https://github.com/LucaRitz/laplacian-pyramid
+        any_library
+        GIT_REPOSITORY https://github.com/LucaRitz/any-library
         GIT_TAG        main
 )
-FetchContent_MakeAvailable(laplacian_pyramid)
+FetchContent_MakeAvailable(any_library)
 
 unset(ANY_PREFIX_BUILD_TEST)
 unset(ANY_PREFIX_BUILD_DOCUMENTATION)
